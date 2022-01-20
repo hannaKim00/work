@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wrap {
+      width: 100vw;
+      height: 100vh;
+      /* fiex */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #wrap div {
+      width: 30vw;
+      height: 30vh;
+      background-color: antiquewhite;
+      border: 1px dashed #555;
+      transition: 1s;
+    }
+    .on {
+      flex-direction: column;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+
+    const wrap = document.querySelector('#wrap');
+
+    // #wrap 클릭하면 발생하는 이벤트 함수
+    function hnaan(target, eventType, className) {
+      target.addEventListener(eventType, function() {
+      if(target.classList.contains(className)) {
+        target.classList.remove(className);
+      } else {
+        target.classList.add(className);
+      }
+    });
+    }
+    //함수호출
+    hnaan(wrap, 'click', 'on');
+
+  </script>
+</body>
+</html>

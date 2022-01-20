@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #wrap {
+      width: 100vw;
+      height: 100vh;
+      /* fiex */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #wrap div {
+      width: 30vw;
+      height: 30vh;
+      background-color: antiquewhite;
+      border: 1px dashed #555;
+      transition: 1s;
+    }
+    .on {
+      flex-direction: column;
+    }
+    #wrap div.size {
+      width: 10vw;
+      height: 10vh;
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+
+  <script>
+    const wrap = document.querySelector('#wrap');
+    const div = document.querySelectorAll('#wrap div');
+
+    let conut = 0;
+    // wrap 클릭하면 박스가 하나씩 커지고 작아지는 이벤트
+    wrap.addEventListener('click', function() {
+      if(conut < div.length) {
+        if(div[conut].classList.contains('size')) {
+          div[conut].classList.remove('size');
+
+        } else {
+          div[conut].classList.add('size');
+        }
+        conut++;
+      }
+      if(conut === 3) {
+        conut = 0;
+      }
+    });
+  </script>
+</body>
+</html>
