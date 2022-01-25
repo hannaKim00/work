@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button>button</button>
+
+  <script>
+
+    const button = document.querySelector('button');
+    let value = "skyblue";
+    button.parentElement.style.backgroundColor = value;
+    
+    button.addEventListener("click", function() {
+      if(value === "skyblue") {
+        value = "white";
+        button.parentElement.style.backgroundColor = value;
+      } else {
+        value = "skyblue";
+        button.parentElement.style.backgroundColor = value;
+      }
+    });
+  </script>
+</body>
+</html>

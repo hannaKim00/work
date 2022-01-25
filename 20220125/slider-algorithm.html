@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>carousel</title>
+  <style>
+    * {padding:0; margin:0; box-sizing: border-box;}
+    #container {
+      width: 100vw;
+      height: 100vh;
+      background-color: #333;
+      /* flex */
+      display: flex;
+      justify-content:center;
+      align-items: center;
+    }
+    #container div {
+      width: 300px;
+      height: 300px;
+      background-color: #fff;
+      border: 1px solid #000;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+
+  <script>
+
+    /*
+    
+    알고리즘 구상
+    1. container의 자식 : 3개의 div의 순서를 바꿀순 없을까?
+    2. 1이라고 써져있는 div가 1초 뒤에 3번 div 다음으로 왔으면 좋겠다.
+    3. 1번 div를 3번 div로 붙이고, 1번div원래 있던 자리를 없앨순 없나?
+    
+    */
+
+    const container = document.querySelector('#container');
+    // itemQueryAll은 '문서'에서 '모두' 선택 했다. 
+    const itemsQueryAll = document.querySelectorAll('#container div');
+    // items는 이미 식별된 container '식별자'에서 '자식들'을 선택 했다.
+    const items = container.children;
+    // itemsQueryAll이라는 변수와 items라는 변수는 결과적으로 같지만, 식별하려는 접근 방식은 다르다.
+    // 무엇으로 해도 상관없다. 편리하고 유지관리가 편한 방식을 선택하면되나, 보통 디자이너들은 querySelectorAll을 애용하는 경향이 있다.
+    console.log(items);
+
+    /*
+
+    items[0]는 1번 div이다
+    items[1]는 2번 div이다
+    items[2]는 3번 div이다
+
+    */
+
+    let timer = setInterval(function() {
+      container.insertBefore(items[0], container.lastChild);
+    }, 1000);
+
+
+
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="container"> container
+    <div> h1parent
+      <h1 id="target">hello</h1>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus voluptate cupiditate saepe impedit,</p>
+    </div>
+  </div>
+
+  <script>
+    // 식별자의 관계를 사용하고 있다
+    const h1 = document.querySelector("#target");
+    console.log(h1);
+    console.dir(h1);
+    console.log(h1.nextElementSibling);
+
+    // nextElementSibling = 형제요소
+    h1.nextElementSibling.style.color = "red"; // nextElementSibling = 형제요소
+    // parentElement = 부모요소
+    h1.parentElement.style.backgroundColor = "skyblue";
+    h1.parentElement.style.width = "50vw";
+    h1.parentElement.style.height = "50vh";
+    h1.nextElementSibling.setAttribute('id','text-box');
+    
+    
+    h1.addEventListener("click", function() {
+      h1.style.fontSize = "10rem";
+      h1.nextElementSibling.style.fontSize = "2rem";
+      h1.nextElementSibling.textContent = "hello";
+      h1.parentElement.parentElement.parentElement.style.backgroundColor = "gray";
+      let time = setInterval(function() {
+        console.log("bye");
+      },1000)
+    });
+  </script>
+</body>
+</html>
