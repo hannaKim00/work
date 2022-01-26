@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="container">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+  <script>
+    const container = document.querySelector('#container');
+    // reset style
+    container.parentElement.style.margin = 0;
+    container.parentElement.style.padding = 0;
+    container.parentElement.style.boxSizing = 'border-box';
+    // container styling
+    let containerHeightValue = 100;
+
+    container.style.width = 100 + "vw";
+    container.style.height = containerHeightValue + "vh";
+    container.style.backgroundColor = `#${333}`;
+    container.style.display = "flex";
+    container.style.justifyContent = "flex-start";
+    container.style.alignItems = "flex-end";
+
+
+    // items styling
+    const colorSet = ['#ddd', "#bbb", "#ccc"];
+
+    let itemHeightValue = containerHeightValue;
+    console.log(itemHeightValue);
+    for (let i = 0; i < container.children.length; i++) {
+      container.children[i].style.width = 20 + "vw";
+      container.children[i].style.backgroundColor = colorSet[i];
+
+      if (i === 0) {
+        container.children[i].style.height = itemHeightValue + "vh";
+      } else if (i === 1) {
+        container.children[i].style.height = itemHeightValue / (i + 1) + "vh";
+      } else {
+        container.children[i].style.height = itemHeightValue / (i + 1) + "vh";
+      }
+    }
+    /* 
+      식별자를 일일히 지정하는 방법 (올바른 방법은 아니나, 코드 확인을 위해 작성);
+      addEventListener의 이벤트 객체를 이해하게되면 훨씬 더 유연하고 좋은 식별자를 만들 수 있음
+      검색어 : addEventListner event object
+      
+    */
+    const itemOne = container.children[0];
+    const itemTwo = container.children[1];
+    const itemThree = container.children[2];
+
+    // items styling
+    // 알고리즘 구상 
+    // 1. 아이템을 클릭하면 서서히 사라지게 만드는 애니메이션
+    // 2. 전제조건 : opacity 값은 지정해주지 않아도 자동으로 1(불투명도 100%) 상태
+    // 3. 조치방식 : 자동으로 설정된 값을 '수동'으로 모두 할당
+    let opacityValue = 1;
+    for (let i = 0; i < container.children.length; i++) {
+      container.children[i].style.opacity = 1;
+    }
+    // 4.위 처럼 값을 할당 해주지 않으면 null(존재하지만 값은 없는 상태)로 출력되는 현상을 브라우저가 자동으로 보이게 만들어주기때문에 값을 지정하여 핸들링 예정
+    // 5. opacity 값이 들어있는지 console.log(itemOne.style.opacity) <-- 라는 디버깅을 지정해주기전과 지정해준 후를 비교해 볼 것 
+
+    console.log(itemOne.style.opacity);
+    // 위의 콘솔은 직접 할당했기때문에 정상적으로 값이 나오지만, 67번 행 이전으로 명령을 옮기면 값이 나오지 않는 특성(브라우저)
+
+    itemOne.addEventListener('click', function () {
+      let opacityValue = 1;
+      let opacityTimer = setInterval(function () {
+        if(opacityValue >= 0) {
+          opacityValue = opacityValue - 0.1;
+          itemOne.style.opacity = opacityValue;
+          console.log("hello");
+        } else {
+          clearInterval(opacityTimer);
+        }
+      }, 16);
+    });
+    itemTwo.addEventListener('click', function () {
+      let opacityValue = 1;
+      let opacityTimer = setInterval(function () {
+        if(opacityValue >= 0) {
+          opacityValue = opacityValue - 0.1;
+          itemTwo.style.opacity = opacityValue;
+          console.log("hello");
+        } else {
+          clearInterval(opacityTimer);
+        }
+      }, 16);
+    });
+    itemThree.addEventListener('click', function () {
+      let opacityValue = 1;
+      let opacityTimer = setInterval(function () {
+        if(opacityValue >= 0) {
+          opacityValue = opacityValue - 0.1;
+          itemThree.style.opacity = opacityValue;
+          console.log("hello");
+        } else {
+          clearInterval(opacityTimer);
+        }
+      }, 16);
+    });
+  </script>
+</body>
+
+</html>
