@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    #container {
+      width: 100vw;
+      height: 500vh;
+      background-color: #333;
+      transition: 1s;
+    }
+
+    #vanilla {
+      top: 10vh;
+      color: #ddd;
+      position:fixed;
+      left:50%;
+      transform: translate(-50%, -50%);
+      
+    }
+
+    .vanilla-text {
+      top: 10vh;
+      color: #ddd;
+      position:fixed;
+      left:30%;
+      transform: translate(-50%, -50%);
+      
+    }
+
+    #jquery {
+      top: 20vh;
+      color: #ddd;
+      position:fixed;
+      left:50%;
+      transform: translate(-50%, -50%);
+      
+    }
+
+    .jquery-text {
+      top: 20vh;
+      color: #ddd;
+      position:fixed;
+      left:30%;
+      transform: translate(-50%, -50%);
+      
+    }
+
+    
+  </style>
+</head>
+
+<body>
+  <h1 id="jquery">sss</h1>
+  <h2 class="jquery-text">jquery 동작</h2>
+  <h1 id="vanilla">sss</h1>
+  <h2 class="vanilla-text">vanilla 동작</h2>
+  <div id="container"></div>
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
+  <script>
+
+
+    $(window).scroll(function() {
+      $("#jquery").text($(window).scrollTop());
+    });
+
+
+
+// vanilla 
+    const vanilla = document.querySelector("#vanilla");
+    const container = document.querySelector("#container");
+
+    window.addEventListener("wheel", function () {
+      console.dir(window);
+      vanilla.textContent = window.scrollY;
+      if (vanilla.textContent > 1500) {
+        container.style.background = "skyblue";
+      } else {
+        container.style.background = "black";
+      }
+    });
+  </script>
+</body>
+
+</html>
