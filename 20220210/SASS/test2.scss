@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 마치 함수처럼 동일한 스타일링을 바로바로 적용할 수 있다.
+@mixin box($color: lightblue) {
+  width: 20vw;
+  height: 20vh;
+  background: $color;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  div {
+    @include box;
+
+    h2 {
+      text-align: center;
+      line-height: 20vh;
+    }
+  }
+  div:nth-child(2) {
+    @include box($color: lightcoral);
+  }
+  div:nth-child(3) {
+    @include box($color: lightgreen);
+  }
+}

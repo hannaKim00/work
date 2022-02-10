@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#container {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#container div {
+  width: 20vw;
+  height: 20vh;
+  background: lightblue;
+}
+
+#container div h2 {
+  text-align: center;
+  line-height: 20vh;
+}
+
+#container div:nth-child(2) {
+  width: 20vw;
+  height: 20vh;
+  background: lightcoral;
+}
+
+#container div:nth-child(3) {
+  width: 20vw;
+  height: 20vh;
+  background: lightgreen;
+}
+/*# sourceMappingURL=test2.css.map */
