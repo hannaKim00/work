@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// 값이 변할 때
+@mixin size-set($width, $hetight) {
+  width: $width;
+  height: $hetight;
+}
+@mixin flex-set($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// 값이 변하지 않지만 자주 사용할때
+%font-weight {
+  font-weight: 100;
+}
+
+$color-1 : #333;
+$color-2 : salmon;
+$color-3 : #fff;
+
+#container {
+  @include size-set(100vw, 100vh);
+  @include flex-set(center, center, row);
+  background-color : $color-1;
+
+  & > div {  // & = 나를 선택
+    @include size-set(50vw, 50vh);
+    background-color : $color-2;
+
+    h1 {
+      @extend %font-weight;
+      color: $color-3;
+    }
+    p {
+      @extend %font-weight;
+      color: $color-3;
+    }
+  }
+}
