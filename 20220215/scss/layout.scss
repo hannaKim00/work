@@ -1,0 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+@mixin flex-set($justify-content, $align-items, $flex-direction) {
+  display: flex;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  flex-direction: $flex-direction;
+}
+
+@mixin size-set($width, $height, $background-color:#ccc) {
+  width: $width;
+  height: $height;
+  background-color: $background-color;
+}
+
+
+%test-border {
+  border: 1px solid #000;
+}
+
+#box {
+
+  @include size-set(100vw, 100vh, #333);
+  @include flex-set(center, center, row);
+
+  &>div {
+    // container
+    @include size-set(50vw, 50vh, #666);
+    @include flex-set(center, center, column);
+
+    &>section:nth-child(1) {
+      @include size-set(50vw, 50%, lightblue);
+      @include flex-set(center, center, row);
+
+      & > div {
+        @include size-set(50%, 100%, lightpink);
+        @include flex-set(center, center, row);
+                
+        & > div {
+          min-width:90%;
+          @include size-set(90%, 90%, salmon);
+          @extend %test-border;
+          position: relative;
+          & div {
+            position: absolute;
+          }
+        }
+      }
+    }
+
+    &>section:nth-child(2) {
+      @include flex-set(center, center, row);
+      @include size-set(50vw, 50%, #aaa);
+
+      div {
+        @include size-set(5vw, 8vh, #fff);
+        @extend %test-border;
+        text-align: center;
+      }
+    }
+
+  }
+
+}

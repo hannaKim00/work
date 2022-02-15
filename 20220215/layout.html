@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="scss/layout.css">
+</head>
+<body>
+  <div id="box">
+    <div id="container">
+      <section>
+        <div id="item-wrap">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </section>
+
+      <section>
+        <div class="prve">prev</div>
+        <div class="next">next</div>
+      </section>
+    </div>
+  </div>
+
+
+  <script>
+    const itemWrap = document.querySelector('#item-wrap');
+    const prve = document.querySelector('.prve');
+    const  next = document.querySelector('.next');
+
+
+    function btnEvent(btn, value) {
+      function forLoop(target, setValue) {
+        for(i = 0; i < target.children.length; i++) {
+          target.children[i].style.left = setValue + "px";
+        }
+      }
+
+      let setValue = value;
+      btn.addEventListener('click', function() {
+        if(btn === prve) {
+          forLoop(itemWrap, setValue);
+          setValue = setValue + setValue;
+        } else {
+          forLoop(itemWrap, setValue);
+          setValue = setValue + setValue;
+        }
+      });
+    };
+
+    btnEvent(prve, 100);
+    btnEvent(next, -100);
+  </script>
+</body>
+</html>
