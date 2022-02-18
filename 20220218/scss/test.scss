@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+nav {
+  #close {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 2;
+  }
+
+  ul {
+    position: absolute;
+    top: 35%;
+    left: 40%;
+    z-index: 3;
+    color: black;
+
+    li:hover {
+      color: red;
+    }
+  }
+
+  #test {
+    position: absolute;
+    left: 60%;
+    top: 35%;
+  }
+  #modal {
+    width: 100vw;
+    height: 100vh;
+    background: #555;
+    position: absolute;
+    z-index: 1;
+    mix-blend-mode: multiply;
+    opacity: .5;
+  }
+}
+
+#container {
+  position: absolute;
+  z-index: 0;
+  color: red;
+
+  h1 {
+    color: blue;
+  }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./scss/test.css">
+</head>
+<body>
+  <nav>
+    <button id="close">close</button>
+    <ul>
+      <li data-order="1">1</li>
+      <li data-order="2">2</li>
+      <li data-order="3">3</li>
+      <li data-order="4">4</li>
+      <li data-order="5">5</li>
+    </ul>
+    <div id="test">
+      <div data-order="1">test-1</div>
+      <div data-order="2">test-2</div>
+      <div data-order="3">test-3</div>
+      <div data-order="4">test-4</div>
+      <div data-order="5">test-5</div>
+    </div>
+    <div id="modal">
+    </div>
+  </nav>
+
+  <div id="container">
+    <h1>title</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur eum animi facilis dicta dolore, itaque ad unde ullam doloribus voluptatibus inventore beatae eveniet autem consectetur totam. Iure eaque magni adipisci.</p>
+  </div>
+
+  <script>
+    const closeElem = document.querySelector('#close');
+    const modal = document.querySelector('#modal');
+    const container = document.querySelector('#container');
+    const nav = document.querySelector('nav');
+
+    closeElem.addEventListener('click', function() {
+      nav.style.display = 'none';
+    });
+
+    const ulli = document.querySelector('ul');
+    const test = document.querySelector('#test');
+    console.log(ulli);
+    console.log(test);
+
+    ulli.addEventListener('click', function(event) {
+      console.log(event.target);
+      console.dir(event.target);
+      console.log(event.target.dataset.order);
+      console.log(typeof event.target.dataset.order);
+
+      let order = Number(event.target.dataset.order); // 문자 -> 숫자
+      
+      test.children[order-1].style.color = 'blue';
+    });
+  </script>
+</body>
+</html>
